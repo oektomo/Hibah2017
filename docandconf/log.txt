@@ -1,0 +1,85 @@
+download every image for raspbian
+http://downloads.raspberrypi.org/raspbian/images/
+
+to enable serial terminal 
+open file /boot/config.txt
+add 
+enable_uart=1
+
+to enable ssh,
+run
+$ sudo raspi-config
+
+go to Interfacing Options -> enable ssh
+
+then if you got the problem "connection closed" run
+$ sudo rm -r /etc/ssh/ssh*key
+$ sudo dpkg-reconfigure openssh-server
+
+then upgrade to latest
+
+$ sudo apt-get update
+$ sudo apt-get upgrade
+
+install git
+$ sudo apt-get install git
+actually git already installed
+
+install lamp
+$ sudo apt-get install apache2 mysql-server msql-client php5-cli phpmyadmin
+
+mysql root password:
+hibah2017mysqlroot
+
+phpmyadmin password:
+hibah2017phpmyadmin
+
+changing Hostname
+edit this file:
+/etc/hostname
+edit this file:
+/etc/hosts
+run this file:
+$ /etc/init.d/hostname.sh
+and rebot
+$ sudo reboot
+
+clone freeboard from it's repo.
+copy all of it to 
+/var/www/html/freeboard/
+
+including /etc/phpmyadmin/apache.conf to 
+/etc/apache2/apache2.conf
+
+configuring CodeIgniter
+/var/www/html/cione/application/config/config.php
+edit those file with:
+change the 'base_url' to your ci url
+change the 'index_page' to empty it
+on root of the codeigniter folder, make a new file named .htaccess
+write this on .htaccess:
+RewriteEngine on
+RewriteCond $1 !^(index\.php|assets|images|js|css|uploads|favicon.jpg)
+RewriteCond %(REQUEST_FILENAME) !-f
+RewriteCond %(REQUEST_FILENAME) !-d
+RewriteRule ^(.*)$ ./index.php/$1 [L]
+
+have fun!!
+
+####################################
+todo:
+install mod_ssl and reconfigure apache2 to use ssl, perhaps has to do some self sign certificate.
+https://www.tecmint.com/setup-https-ssl-certificates-to-secure-phpmyadmin-login/
+
+adding capability, so boot not waiting if no network within reach.
+https://wiki.netbsd.org/tutorials/how_to_use_wpa_supplicant/
+keyword file:
+setting dhcpcd_flags in /etc/rc.conf:
+
+dhcpcd_flags="${dhcpcd_flags} -b"
+
+adding more "virtual host" on apache configuration, see on:
+
+adding local virtual host, may need dns perhaps
+and move directory for web files
+
