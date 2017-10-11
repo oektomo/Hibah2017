@@ -28,6 +28,9 @@ actually git already installed
 install lamp
 $ sudo apt-get install apache2 mysql-server msql-client php5-cli phpmyadmin
 
+Rpi password:
+hibah2017
+
 mysql root password:
 hibah2017mysqlroot
 
