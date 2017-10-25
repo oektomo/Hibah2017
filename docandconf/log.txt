@@ -68,6 +68,17 @@ RewriteCond %(REQUEST_FILENAME) !-d
 RewriteRule ^(.*)$ ./index.php/$1 [L]
 
 have fun!!
+installing LCD with touch screen
+
+https://www.waveshare.com/wiki/3.5inch_RPi_LCD_(A)
+https://diyhacking.com/raspberry-pi-touchscreen-lcd-tutorial/
+
+installing keyboard virtual
+$ sudo apt-get install matchbox-keyboard
+
+$ sudo reboot
+
+menu --> accessories --> keyboard
 
 ####################################
 todo:
@@ -86,14 +97,4 @@ adding more "virtual host" on apache configuration, see on:
 adding local virtual host, may need dns perhaps
 and move directory for web files
 
-installing LCD with touch screen
-
-https://www.waveshare.com/wiki/3.5inch_RPi_LCD_(A)
-https://diyhacking.com/raspberry-pi-touchscreen-lcd-tutorial/
-
-installing keyboard virtual
-$ sudo apt-get install matchbox-keyboard
-
-$ sudo reboot
-
-menu --> accessories --> keyboard
+learn using python and frame buffer
